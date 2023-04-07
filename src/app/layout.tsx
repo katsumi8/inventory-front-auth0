@@ -1,6 +1,7 @@
-import Header from "@/components/Header";
-import Sidebar from "@/components/Sidebar";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ToastContainer } from "react-toastify";
 import "./globals.css";
+import { Providers } from "./providers";
 
 export default function RootLayout({
   children,
@@ -11,14 +12,9 @@ export default function RootLayout({
     <html lang="en">
       <head />
       <body>
-        <main className="bg-gray-100 min-h-screen">
-          <Sidebar>
-            <main className="bg-gray-100 min-h-screen">
-              <Header />
-              {children}
-            </main>
-          </Sidebar>
-        </main>
+        <Providers>
+          <main className="min-h-screen bg-gray-100">{children}</main>
+        </Providers>
       </body>
     </html>
   );
