@@ -13,13 +13,15 @@ function FormInput({ label, name, type, placeholder }: FormInputProps) {
     register,
     formState: { errors },
   } = useFormContext();
+  const errorText = errors[name]?.message?.toString();
+
   return (
     <div className="mb-6">
-      {label ? (
+      {label && (
         <label htmlFor={name} className="py-3 text-2xl text-blue-600">
           {label}
         </label>
-      ) : null}
+      )}
       <div className="my-4">
         <input
           type={type}
@@ -27,10 +29,8 @@ function FormInput({ label, name, type, placeholder }: FormInputProps) {
           placeholder={placeholder}
           {...register(name)}
         />
-        {errors[name] && (
-          <p className="mt-1 text-sm text-red-700">
-            {errors[name]?.message as string}
-          </p>
+        {!!errorText && (
+          <p className="mt-1 text-sm text-red-700">{errorText}</p>
         )}
       </div>
     </div>

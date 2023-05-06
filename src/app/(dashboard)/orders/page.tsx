@@ -2,23 +2,22 @@ import React from "react";
 import { FaShoppingBag } from "react-icons/fa";
 import { BsPlusCircleFill, BsThreeDotsVertical } from "react-icons/bs";
 import { IoIosArrowDown } from "react-icons/io";
-
+import Link from "next/link";
 import { data } from "@/data/data";
 import { CgMathPlus } from "react-icons/cg";
 
 function OrdersPage() {
-
-  
   return (
     <div className="p-4">
       {/* TODO: Linkタグに変更してオーダーページへ飛ばす */}
       <div className="flex-row-reverse hidden pb-4 xl:flex">
-        <div className="items-center hidden p-3 font-bold text-white bg-blue-500 rounded-full sm:flex">
-          <CgMathPlus className="text-white" size={30} />
-          <p className="">New Order</p>
-        </div>
+        <Link href="/orders/new">
+          <div className="items-center hidden p-3 font-bold text-white bg-blue-500 rounded-full sm:flex">
+            <CgMathPlus className="text-white" size={30} />
+            <p className="">New Order</p>
+          </div>
+        </Link>
       </div>
-
 
       <div className="w-full p-4 m-auto overflow-y-auto bg-white rounded-lg">
         <div className="grid items-center justify-between grid-cols-2 p-2 my-3 cursor-pointer md:grid-cols-5 sm:grid-cols-3">
