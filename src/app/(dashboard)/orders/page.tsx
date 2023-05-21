@@ -9,7 +9,6 @@ import { CgMathPlus } from "react-icons/cg";
 function OrdersPage() {
   return (
     <div className="p-4">
-      {/* TODO: Linkタグに変更してオーダーページへ飛ばす */}
       <div className="flex-row-reverse hidden pb-4 xl:flex">
         <Link href="/orders/new">
           <div className="items-center hidden p-3 font-bold text-white bg-blue-500 rounded-full sm:flex">

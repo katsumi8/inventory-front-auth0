@@ -6,8 +6,6 @@ import { MdOutlineFoodBank } from "react-icons/md";
 function ProductPage() {
   return (
     <div className="p-4">
-
-      
       <div className="w-full p-4 m-auto overflow-y-auto bg-white border rounded-lg">
         <div className="grid items-center justify-between grid-cols-2 p-2 my-3 cursor-pointer md:grid-cols-4 sm:grid-cols-3">
           <span>Name</span>
