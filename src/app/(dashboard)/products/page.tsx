@@ -1,11 +1,22 @@
 import { data } from "@/data/data";
+import Link from "next/link";
 import React from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { CgMathPlus } from "react-icons/cg";
 import { MdOutlineFoodBank } from "react-icons/md";
 
 function ProductPage() {
   return (
     <div className="p-4">
+      <div className="flex-row-reverse pb-4 xl:flex">
+        <Link href="/products/new">
+          <div className="items-center hidden p-3 font-bold text-white bg-blue-500 rounded-full sm:flex">
+            <CgMathPlus className="text-white" size={30} />
+            <p className="">Add Product</p>
+          </div>
+        </Link>
+      </div>
+
       <div className="w-full p-4 m-auto overflow-y-auto bg-white border rounded-lg">
         <div className="grid items-center justify-between grid-cols-2 p-2 my-3 cursor-pointer md:grid-cols-4 sm:grid-cols-3">
           <span>Name</span>

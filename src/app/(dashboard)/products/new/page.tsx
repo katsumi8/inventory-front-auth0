@@ -1,5 +1,7 @@
+import { CreateNewProduct } from "@/features/Dashboard/Products/components/createNewProduct";
+
 function NewProductPage() {
-  return <div>Add Product page</div>;
+  return <CreateNewProduct />;
 }
 
 export default NewProductPage;
