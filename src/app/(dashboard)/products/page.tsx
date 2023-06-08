@@ -8,7 +8,7 @@ import { MdOutlineFoodBank } from "react-icons/md";
 function ProductPage() {
   return (
     <div className="p-4">
-      <div className="flex-row-reverse pb-4 xl:flex">
+      <div className="flex-row-reverse pb-4 flex">
         <Link href="/products/new">
           <div className="items-center hidden p-3 font-bold text-white bg-blue-500 rounded-full sm:flex">
             <CgMathPlus className="text-white" size={30} />
