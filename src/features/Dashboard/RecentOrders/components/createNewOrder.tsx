@@ -14,6 +14,9 @@ export const CreateNewOrder = () => {
     errors,
     handleAddItemClick,
     remove,
+    products,
+    register,
+    watch,
   } = useCreateOrder();
 
   return (
@@ -45,27 +48,45 @@ export const CreateNewOrder = () => {
             {fields.map((field, index) => (
               <div key={field.id} className="flex items-center w-full">
                 <div className="grid justify-between w-full grid-cols-4 gap-4 px-4 ">
-                  <FormInputArray
-                    name={`orderLines.${index}.productName`}
-                    type="text"
-                    error={errors.orderLines?.[index]?.productName}
-                  />
-                  <FormInputArray
-                    name={`orderLines.${index}.productCategory`}
-                    type="text"
-                    error={errors.orderLines?.[index]?.productCategory}
-                  />
+                  <div className="my-2">
+                    <select
+                      {...register(`orderLines.${index}.productId`, {})}
+                      className="w-full px-4 py-5 text-sm font-normal text-gray-700 transition ease-in-out bg-white border border-gray-300 border-solid rounded-lg shadow-sm form-control bg-clip-padding focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                    >
+                      <option value="">Select a product</option>
+                      {products?.map((product) => (
+                        <option key={product.id} value={product.id}>
+                          {product.itemName}
+                        </option>
+                      ))}
+                    </select>
+                    <p className="mt-1 text-sm text-red-700">
+                      {errors.orderLines?.[index]?.productId?.message}
+                    </p>
+                  </div>
+                  <div className="my-2">
+                    <div className="w-full px-4 py-5 text-sm font-normal text-gray-700 transition ease-in-out bg-white rounded-lg shadow-sm form-control bg-clip-padding focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                      {products?.find(
+                        (x) =>
+                          x.id ===
+                          Number(watch(`orderLines.${index}.productId`))
+                      )?.itemCategory ?? "Select a product first"}
+                    </div>
+                  </div>
                   <FormInputArray
                     name={`orderLines.${index}.quantity`}
                     type="number"
                     error={errors.orderLines?.[index]?.quantity}
                   />
-                  <FormInputArray
-                    name={`orderLines.${index}.unit`}
-                    type="text"
-                    placeholder={"kg / l / pieces"}
-                    error={errors.orderLines?.[index]?.unit}
-                  />
+                  <div className="my-2">
+                    <div className="w-full px-4 py-5 text-sm font-normal text-gray-700 transition ease-in-out bg-white rounded-lg shadow-sm form-control bg-clip-padding focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                      {products?.find(
+                        (x) =>
+                          x.id ===
+                          Number(watch(`orderLines.${index}.productId`))
+                      )?.unit ?? "Select a product first"}
+                    </div>
+                  </div>
                 </div>
                 <button
                   onClick={() => remove(index)}

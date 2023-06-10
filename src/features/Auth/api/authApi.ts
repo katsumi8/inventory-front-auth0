@@ -1,78 +1,51 @@
-import axios from "axios";
+import { apiClient } from "@/api";
 import {
   LoginInput,
   RegisterInput,
   ResetPasswordInput,
 } from "@/features/Auth/schema/user.schema";
-import { ILoginResponse, GenericResponse, IUserResponse } from "../types";
-import { SERVER_ENDPOINT } from "@/utils/getServerEndpoint";
-
-export const authApi = axios.create({
-  baseURL: `${SERVER_ENDPOINT}/api/`,
-  withCredentials: true,
-});
-
-authApi.defaults.headers.common["Content-Type"] = "application/json";
-authApi.defaults.headers.common.Accept = "application/json";
+import { GenericResponse } from "@/types";
+import { ILoginResponse, IUserResponse } from "../types";
 
 export const refreshAccessTokenFn = async () => {
-  const response = await authApi.get<ILoginResponse>("auth/refresh");
+  const response = await apiClient.get<ILoginResponse>("auth/refresh");
   return response.data;
 };
 
-authApi.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  async (error) => {
-    const originalRequest = error.config;
-    const errMessage = error.response.data.message as string;
-    if (errMessage.includes("not logged in") && !originalRequest._retry) {
-      originalRequest._retry = true;
-      await refreshAccessTokenFn();
-      return authApi(originalRequest);
-    }
-    if (
-      errMessage.includes("not refresh") ||
-      errMessage.includes("refresh Token is not provided")
-    ) {
-      document.location.href = "/login";
-    }
-    return Promise.reject(error);
-  }
-);
-
 export const signUpUserFn = async (user: RegisterInput) => {
-  const response = await authApi.post<GenericResponse>("auth/register", user);
+  const response = await apiClient.post<GenericResponse>("auth/register", user);
   return response.data;
 };
 
 export const loginUserFn = async (user: LoginInput) => {
-  const response = await authApi.post<ILoginResponse>("auth/login", user);
+  const response = await apiClient.post<ILoginResponse>("auth/login", user);
   return response.data;
 };
 
 export const verifyEmailFn = async (verificationCode: string) => {
-  const response = await authApi.get<GenericResponse>(
+  const response = await apiClient.get<GenericResponse>(
     `auth/verifyemail/${verificationCode}`
   );
   return response.data;
 };
 
 export const logoutUserFn = async () => {
-  const response = await authApi.get<GenericResponse>("auth/logout");
+  const response = await apiClient.get<GenericResponse>("auth/logout");
   return response.data;
 };
 
 export const getMeFn = async () => {
-  const response = await authApi.get<IUserResponse>("users/me");
+  const response = await apiClient.get<IUserResponse>("users/me");
   return response.data;
 };
 
 export const forgotPasswordFn = async (email: string) => {
-  const response = await authApi.post<GenericResponse>("auth/forgotpassword", {
-    email,
-  });
+  const response = await apiClient.post<GenericResponse>(
+    "auth/forgotpassword",
+    {
+      email,
+    }
+  );
   return response.data;
 };
 
@@ -80,7 +53,7 @@ export const resetPasswordFn = async (
   data: ResetPasswordInput,
   resetCode: string
 ) => {
-  const response = await authApi.patch<GenericResponse>(
+  const response = await apiClient.patch<GenericResponse>(
     `auth/resetpassword/${resetCode}`,
     data
   );

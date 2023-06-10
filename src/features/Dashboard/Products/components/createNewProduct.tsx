@@ -4,11 +4,14 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { useCreateProduct } from "../hooks/useCreateProduct";
 import { CreateNewProductInput, createNewProductSchema } from "../schema";
 import FormInput from "./formInput";
 
 export const CreateNewProduct = () => {
   const router = useRouter();
+  const { createProduct } = useCreateProduct();
+
   const methods = useForm<CreateNewProductInput>({
     resolver: zodResolver(createNewProductSchema),
   });
@@ -21,8 +24,13 @@ export const CreateNewProduct = () => {
   const onSubmitHandler: SubmitHandler<CreateNewProductInput> = async (
     values
   ) => {
-    console.log(values);
-    router.push("/products");
+    try {
+      console.log(values);
+      await createProduct(values);
+      router.replace("/products");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -84,7 +92,7 @@ export const CreateNewProduct = () => {
                   label={"Sales Price"}
                   name={"salesPrice"}
                   required={true}
-                  type={"text"}
+                  type={"number"}
                 />
                 <FormInput
                   label={"Sales Account"}
@@ -107,7 +115,7 @@ export const CreateNewProduct = () => {
                   label={"Purchase Price"}
                   name={"purchasePrice"}
                   required={true}
-                  type={"text"}
+                  type={"number"}
                 />
                 <FormInput
                   label={"Purchase Account"}
@@ -131,7 +139,7 @@ export const CreateNewProduct = () => {
                 label={"Opening Stock Value"}
                 name={"openingStockValue"}
                 required={false}
-                type={"text"}
+                type={"number"}
               />
               <FormInput
                 label={"Reorder Value"}

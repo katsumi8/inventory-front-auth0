@@ -20,12 +20,7 @@ export interface IUser {
 
 export const Providers = ["local", "Google", "Github", "Microsoft"] as const;
 
-export type Provider = typeof Providers[number];
-
-export interface GenericResponse {
-  status: string;
-  message: string;
-}
+export type Provider = (typeof Providers)[number];
 
 export interface ILoginResponse {
   status: string;

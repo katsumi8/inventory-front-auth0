@@ -3,21 +3,32 @@ import {
   createNewOrderSchema,
 } from "@/features/Dashboard/RecentOrders/schema/newOrderForm.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
+import { getProducts } from "../../Products/api";
 import { useOrderStore } from "../store";
 
 export const useCreateOrder = () => {
   const router = useRouter();
+  const {
+    isLoading,
+    isError,
+    data: products,
+  } = useQuery(["products"], () => getProducts(), {
+    select: (data) => data.data,
+    cacheTime: 0,
+    retry: false,
+  });
+
   const setOrderConfirm = useOrderStore((state) => state.setOrder);
   const methods = useForm<CreateNewOrderInput>({
     resolver: zodResolver(createNewOrderSchema),
     defaultValues: {
       orderLines: [
         {
-          productName: "",
-          productCategory: "",
+          productId: "",
           quantity: 0,
           unit: "",
         },
@@ -29,6 +40,8 @@ export const useCreateOrder = () => {
     handleSubmit,
     formState: { isSubmitSuccessful, errors },
     control,
+    register,
+    watch,
   } = methods;
   const { fields, append, remove } = useFieldArray({
     control,
@@ -38,8 +51,7 @@ export const useCreateOrder = () => {
   const handleAddItemClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     append({
-      productName: "",
-      productCategory: "",
+      productId: "0",
       quantity: 0,
       unit: "",
     });
@@ -49,8 +61,8 @@ export const useCreateOrder = () => {
     values
   ) => {
     console.log(values);
-    setOrderConfirm(values);
-    router.push("orders/new/confirm");
+    // setOrderConfirm(values);
+    // router.push("orders/new/confirm");
   };
 
   useEffect(() => {
@@ -67,5 +79,8 @@ export const useCreateOrder = () => {
     errors,
     remove,
     handleAddItemClick,
+    products,
+    register,
+    watch,
   };
 };

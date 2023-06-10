@@ -1,22 +1,14 @@
 import { object, string, TypeOf } from "zod";
-export const productCategories = [
-  "Beverages",
-  "Pastries",
-  "Sandwiches",
-] as const;
-
-export type ProductCategory = (typeof productCategories)[number];
 
 // A single line schema
 const singleLineSchema = object({
-  productName: string().min(1, "Product name is required"),
-  productCategory: string().min(1, "Category is required"),
+  productId: string().min(1, "Product name is required"),
   quantity: string()
     .refine((val) => /^[1-9]\d*$/.test(val), {
       message: "Quantity must be at least 1",
     })
     .transform((val) => parseInt(val, 10)),
-  unit: string().min(1, "Unit is required"),
+  unit: string().optional(),
 });
 
 export const createNewOrderSchema = object({
