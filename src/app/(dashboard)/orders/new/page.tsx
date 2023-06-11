@@ -1,4 +1,4 @@
-import { CreateNewOrder } from "@/features/Dashboard/RecentOrders/components/createNewOrder";
+import { CreateNewOrder } from "@/features/Dashboard/RecentOrders/components/CreateNewOrder";
 
 function NewOrderPage() {
   return <CreateNewOrder />;

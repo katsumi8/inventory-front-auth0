@@ -1,5 +1,5 @@
 "use client";
-import { useOrderStore } from "../store";
+import { useOrderStore } from "../../store";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 

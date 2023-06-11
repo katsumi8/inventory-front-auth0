@@ -11,13 +11,13 @@ function Header() {
 
   useEffect(() => {
     if (pathName === "/customers") {
-      setHeaderTitle("Customers");
+      setHeaderTitle("Customers Demo");
     } else if (pathName === "/orders") {
       setHeaderTitle("Orders");
     } else if (pathName === "/products") {
       setHeaderTitle("Products");
     } else {
-      setHeaderTitle("Dashboard");
+      setHeaderTitle("Dashboard Demo");
     }
     setShowDropdown(false);
   }, [pathName]);

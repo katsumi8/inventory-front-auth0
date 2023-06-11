@@ -1,28 +1,6 @@
-import { IUser } from "@/features/Auth/types";
+import { OrderLine } from "../../RecentOrders/types";
 
-interface Order {
-  id: number;
-  supplier: string;
-  additionalNotes?: string;
-  createdAt: Date;
-  updatedAt: Date;
-  orderLines: OrderLine[];
-  User?: IUser;
-  userId?: string;
-}
-
-interface OrderLine {
-  id: number;
-  quantity: number;
-  orderId: number;
-  order: Order;
-  productId: number;
-  product: Product;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-interface Product {
+export interface Product {
   id: number;
   createdAt: Date;
   updatedAt: Date;

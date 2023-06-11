@@ -1,9 +1,9 @@
 "use client";
 import FormInput from "@/features/Auth/components/FormInput";
-import { FormInputArray } from "@/features/Dashboard/RecentOrders/components/formInputArray";
 import Link from "next/link";
 import { FormProvider } from "react-hook-form";
-import { useCreateOrder } from "../hooks/useCreateOrder";
+import { useOrderForm } from "../../hooks/useOrderForm";
+import { FormInputArray } from "./formInputArray";
 
 export const CreateNewOrder = () => {
   const {
@@ -17,7 +17,7 @@ export const CreateNewOrder = () => {
     products,
     register,
     watch,
-  } = useCreateOrder();
+  } = useOrderForm();
 
   return (
     <div className="w-full p-4 m-auto overflow-y-auto bg-white rounded-lg h-[90vh]">

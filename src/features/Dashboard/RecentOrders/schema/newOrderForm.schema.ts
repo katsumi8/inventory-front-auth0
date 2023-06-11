@@ -8,7 +8,6 @@ const singleLineSchema = object({
       message: "Quantity must be at least 1",
     })
     .transform((val) => parseInt(val, 10)),
-  unit: string().optional(),
 });
 
 export const createNewOrderSchema = object({
