@@ -26,24 +26,13 @@ export const ConfirmOrder = () => {
             <p className="px-4">{orders?.supplier}</p>
           </div>
         </div>
-        <div className="w-full p-4">
-          <div className="grid grid-cols-4 gap-4">
-            <p className="py-3 text-2xl text-blue-600">Product Name</p>{" "}
-            <p className="py-3 text-2xl text-blue-600">Category</p>{" "}
-            <p className="py-3 text-2xl text-blue-600">Quantity</p>{" "}
-            <p className="py-3 text-2xl text-blue-600">Unit</p>
+        <div className="flex w-full">
+          <div className="w-full px-4 flex items-center">
+            <p className="text-2xl text-blue-600">Product: </p>
+            <p className="px-4">{orders?.productName}</p>
+            <p className="text-2xl text-blue-600">Quantity: </p>
+            <p className="px-4">{orders?.quantity}</p>
           </div>
-          {orders &&
-            orders.orderLines.map((field, index) => (
-              <div key={index} className="flex items-center w-full">
-                <div className="grid justify-between w-full grid-cols-4 gap-4 px-4 ">
-                  <div>{field.productName}</div>
-                  <div>{field.productCategory}</div>
-                  <div>{field.quantity}</div>
-                  <div>{field.unit}</div>
-                </div>
-              </div>
-            ))}
         </div>
         <div className="flex flex-row-reverse w-full">
           <button

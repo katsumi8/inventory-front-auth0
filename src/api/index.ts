@@ -4,7 +4,7 @@ import { SERVER_ENDPOINT } from "@/utils/getServerEndpoint";
 import axios from "axios";
 
 export const apiClient = axios.create({
-  baseURL: `${SERVER_ENDPOINT}/api/`,
+  baseURL: `${SERVER_ENDPOINT}/`,
   withCredentials: true,
 });
 

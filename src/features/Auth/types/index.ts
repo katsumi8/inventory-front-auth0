@@ -11,11 +11,7 @@ export type ApiRequestHandler = {
 export interface IUser {
   name: string;
   email: string;
-  role: string;
   id: string;
-  createdAt: string;
-  updatedAt: string;
-  provider: Provider;
 }
 
 export const Providers = ["local", "Google", "Github", "Microsoft"] as const;
@@ -29,8 +25,7 @@ export interface ILoginResponse {
 }
 
 export interface IUserResponse {
-  status: string;
-  data: {
-    user: IUser;
-  };
+  name: string;
+  email: string;
+  id: string;
 }

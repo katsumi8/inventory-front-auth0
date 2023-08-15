@@ -9,7 +9,7 @@ export const getUser = () => {
 
   const { data } = useQuery(["getMe"], getMeFn, {
     select(data) {
-      return data.data.user;
+      return data;
     },
     onSuccess(data) {
       store.setAuthUser(data);

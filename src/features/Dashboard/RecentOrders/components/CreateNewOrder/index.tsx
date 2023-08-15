@@ -3,21 +3,9 @@ import FormInput from "@/features/Auth/components/FormInput";
 import Link from "next/link";
 import { FormProvider } from "react-hook-form";
 import { useOrderForm } from "../../hooks/useOrderForm";
-import { FormInputArray } from "./formInputArray";
 
 export const CreateNewOrder = () => {
-  const {
-    methods,
-    handleSubmit,
-    onSubmitHandler,
-    fields,
-    errors,
-    handleAddItemClick,
-    remove,
-    products,
-    register,
-    watch,
-  } = useOrderForm();
+  const { methods, handleSubmit, onSubmitHandler } = useOrderForm();
 
   return (
     <div className="w-full p-4 m-auto overflow-y-auto bg-white rounded-lg h-[90vh]">
@@ -37,72 +25,25 @@ export const CreateNewOrder = () => {
                 />
               </div>
             </div>
-            <div className="w-full px-4">
-              <div className="grid grid-cols-4 gap-4">
-                <p className="py-3 text-2xl text-blue-600">Product Name</p>
-                <p className="py-3 text-2xl text-blue-600">Category</p>
-                <p className="py-3 text-2xl text-blue-600">Quantity</p>
-                <p className="py-3 text-2xl text-blue-600">Unit</p>
+            <div className="flex w-full">
+              <div className="w-full px-4">
+                <FormInput
+                  name="productName"
+                  type="text"
+                  label="Product Name"
+                  placeholder={""}
+                />
               </div>
             </div>
-            {fields.map((field, index) => (
-              <div key={field.id} className="flex items-center w-full">
-                <div className="grid justify-between w-full grid-cols-4 gap-4 px-4 ">
-                  <div className="my-2">
-                    <select
-                      {...register(`orderLines.${index}.productId`, {})}
-                      className="w-full px-4 py-5 text-sm font-normal text-gray-700 transition ease-in-out bg-white border border-gray-300 border-solid rounded-lg shadow-sm form-control bg-clip-padding focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    >
-                      <option value="">Select a product</option>
-                      {products?.map((product) => (
-                        <option key={product.id} value={product.id}>
-                          {product.itemName}
-                        </option>
-                      ))}
-                    </select>
-                    <p className="mt-1 text-sm text-red-700">
-                      {errors.orderLines?.[index]?.productId?.message}
-                    </p>
-                  </div>
-                  <div className="my-2">
-                    <div className="w-full px-4 py-5 text-sm font-normal text-gray-700 transition ease-in-out bg-white rounded-lg shadow-sm form-control bg-clip-padding focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
-                      {products?.find(
-                        (x) =>
-                          x.id ===
-                          Number(watch(`orderLines.${index}.productId`))
-                      )?.itemCategory ?? "Select a product first"}
-                    </div>
-                  </div>
-                  <FormInputArray
-                    name={`orderLines.${index}.quantity`}
-                    type="number"
-                    error={errors.orderLines?.[index]?.quantity}
-                  />
-                  <div className="my-2">
-                    <div className="w-full px-4 py-5 text-sm font-normal text-gray-700 transition ease-in-out bg-white rounded-lg shadow-sm form-control bg-clip-padding focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
-                      {products?.find(
-                        (x) =>
-                          x.id ===
-                          Number(watch(`orderLines.${index}.productId`))
-                      )?.unit ?? "Select a product first"}
-                    </div>
-                  </div>
-                </div>
-                <button
-                  onClick={() => remove(index)}
-                  className="w-10 h-10 px-1 py-1 ml-2 text-white bg-red-500 rounded"
-                >
-                  X
-                </button>
+            <div className="flex w-full">
+              <div className="w-full px-4">
+                <FormInput
+                  name="quantity"
+                  type="number"
+                  label="Quantity"
+                  placeholder={""}
+                />
               </div>
-            ))}
-            <div className="flex w-full px-4 mb-4">
-              <button
-                onClick={handleAddItemClick}
-                className="py-2 text-xl text-blue-800 underline"
-              >
-                + Add another Item
-              </button>
             </div>
             <div className="flex w-full">
               <div className="w-full px-4">

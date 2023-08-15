@@ -2,13 +2,9 @@ import { create } from "zustand";
 
 type OrderInfo = {
   supplier: string;
+  productName: string;
+  quantity: number;
   additionalNotes?: string;
-  orderLines: {
-    productName: string;
-    productCategory: string;
-    quantity: number;
-    unit: string;
-  }[];
 };
 
 interface OrderStore {
