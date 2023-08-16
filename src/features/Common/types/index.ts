@@ -6,4 +6,4 @@ export const Routes = [
   "/profile",
 ] as const;
 
-export type Route = typeof Routes[number];
+export type Route = (typeof Routes)[number];

@@ -1,7 +1,6 @@
 import React from "react";
 import { TitleSectionOnTopOfCardProps } from "../../types";
 
-
 function TitleSectionOnTopOfCard({
   title,
   subMessage,

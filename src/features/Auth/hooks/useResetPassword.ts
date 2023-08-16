@@ -52,7 +52,7 @@ export const useResetPassword = (resetToken: string) => {
           });
         }
       },
-    }
+    },
   );
 
   const {

@@ -1,10 +1,8 @@
-import React from 'react'
-import TopCardsPT from './Presenter'
+import React from "react";
+import TopCardsPT from "./Presenter";
 
 function TopCards() {
-  return (
-    <TopCardsPT />
-  )
+  return <TopCardsPT />;
 }
 
-export default TopCards
+export default TopCards;

@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <TopCards />
-      <div className="grid gap-4 p-4 md:grid-cols-3 grid-cols1">
+      <div className="grid-cols1 grid gap-4 p-4 md:grid-cols-3">
         <BarChart />
         <RecentOrdersOnSidebar />
       </div>

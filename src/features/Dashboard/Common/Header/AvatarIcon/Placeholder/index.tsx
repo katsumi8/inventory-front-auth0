@@ -2,9 +2,9 @@ import React from "react";
 
 function Placeholder() {
   return (
-    <div className="relative w-10 h-10 overflow-hidden bg-gray-200 rounded-full">
+    <div className="relative h-10 w-10 overflow-hidden rounded-full bg-gray-200">
       <svg
-        className="absolute w-12 h-12 text-gray-500 -left-1"
+        className="absolute -left-1 h-12 w-12 text-gray-500"
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"

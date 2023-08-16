@@ -8,7 +8,7 @@ export default function RootLayoutForDashboard({
 }) {
   return (
     <Sidebar>
-      <main className="min-h-screen bg-gray-100 mx-2">
+      <main className="mx-2 min-h-screen bg-gray-100">
         <Header />
         {children}
       </main>

@@ -36,7 +36,7 @@ function AvatarIcon({ setShowDropdown, showDropdown }: Props) {
       <button
         id="avatarButton"
         type="button"
-        className="w-10 h-10 rounded-full cursor-pointer"
+        className="h-10 w-10 cursor-pointer rounded-full"
         onClick={() => setShowDropdown(!showDropdown)}
       >
         <Placeholder />

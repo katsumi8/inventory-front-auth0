@@ -22,8 +22,8 @@ function ShowProducts() {
 
   return (
     <div className="p-4">
-      <div className="w-full p-4 m-auto overflow-y-auto bg-white bproduct rounded-lg">
-        <div className="grid items-center justify-between grid-cols-2 p-2 my-3 cursor-pointer md:grid-cols-4 sm:grid-cols-3">
+      <div className="bproduct m-auto w-full overflow-y-auto rounded-lg bg-white p-4">
+        <div className="my-3 grid cursor-pointer grid-cols-2 items-center justify-between p-2 sm:grid-cols-3 md:grid-cols-4">
           <span>Name</span>
           <span className="text-right sm:text-left">Supplier</span>
         </div>
@@ -31,10 +31,10 @@ function ShowProducts() {
           {orders.map((order, id) => (
             <li
               key={id}
-              className="grid items-center justify-between grid-cols-2 p-2 my-3 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 md:grid-cols-4 sm:grid-cols-3"
+              className="my-3 grid cursor-pointer grid-cols-2 items-center justify-between rounded-lg bg-gray-50 p-2 hover:bg-gray-100 sm:grid-cols-3 md:grid-cols-4"
             >
               <div className="flex items-center">
-                <div className="p-3 bg-purple-100 rounded-lg">
+                <div className="rounded-lg bg-purple-100 p-3">
                   <MdOutlineFoodBank className="text-purple-800" />
                 </div>
                 <p className="pl-4">{order.productName}</p>

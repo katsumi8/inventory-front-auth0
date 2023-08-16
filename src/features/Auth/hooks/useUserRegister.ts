@@ -1,4 +1,7 @@
-import { RegisterInput, registerSchema } from "@/features/Auth/schema/user.schema";
+import {
+  RegisterInput,
+  registerSchema,
+} from "@/features/Auth/schema/user.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";

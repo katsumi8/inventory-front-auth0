@@ -25,7 +25,7 @@ function FormInput({ label, name, type, placeholder }: FormInputProps) {
       <div className="my-4">
         <input
           type={type}
-          className="w-full px-4 py-5 text-sm font-normal text-gray-700 transition ease-in-out bg-white border border-gray-300 border-solid rounded-lg shadow-sm form-control bg-clip-padding focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+          className="form-control w-full rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-4 py-5 text-sm font-normal text-gray-700 shadow-sm transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
           placeholder={placeholder}
           {...register(name)}
         />

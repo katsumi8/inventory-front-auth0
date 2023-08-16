@@ -8,42 +8,42 @@ import { FiSettings } from "react-icons/fi";
 function SidebarPT({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex">
-      <div className="fixed w-20 h-screen p-4 bg-white border-r-[1px] flex flex-col justify-between">
+      <div className="fixed flex h-screen w-20 flex-col justify-between border-r-[1px] bg-white p-4">
         <div className="flex flex-col items-center">
           <Link href="/">
-            <div className="p-3 text-white bg-purple-800 rounded-lg">
+            <div className="rounded-lg bg-purple-800 p-3 text-white">
               <RxSketchLogo size={20} />
             </div>
           </Link>
-          <span className="border-b-[1px] border-gray-200 w-full p-2"></span>
+          <span className="w-full border-b-[1px] border-gray-200 p-2"></span>
           <Link href="/">
-            <div className="p-3 my-4 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200">
+            <div className="my-4 cursor-pointer rounded-lg bg-gray-100 p-3 hover:bg-gray-200">
               <RxDashboard size={20} />
             </div>
           </Link>
           <Link href="/orders">
-            <div className="p-3 my-4 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200">
+            <div className="my-4 cursor-pointer rounded-lg bg-gray-100 p-3 hover:bg-gray-200">
               <BsCartCheck size={20} />
             </div>
           </Link>
           <Link href="/products">
-            <div className="p-3 my-4 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200">
+            <div className="my-4 cursor-pointer rounded-lg bg-gray-100 p-3 hover:bg-gray-200">
               <CgCoffee size={20} />
             </div>
           </Link>
           <Link href="/customers">
-            <div className="p-3 my-4 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200">
+            <div className="my-4 cursor-pointer rounded-lg bg-gray-100 p-3 hover:bg-gray-200">
               <BsBuilding size={20} />
             </div>
           </Link>
           <Link href="/profile">
-            <div className="p-3 my-4 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200">
+            <div className="my-4 cursor-pointer rounded-lg bg-gray-100 p-3 hover:bg-gray-200">
               <FiSettings size={20} />
             </div>
           </Link>
         </div>
       </div>
-      <main className="w-full ml-20">{children}</main>
+      <main className="ml-20 w-full">{children}</main>
     </div>
   );
 }

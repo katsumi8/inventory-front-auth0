@@ -5,10 +5,10 @@ const ProfilePage = () => {
   const { user } = getUser();
 
   return (
-    <section className="min-h-screen pt-20 bg-ct-blue-600">
-      <div className="max-w-4xl mx-auto bg-ct-dark-100 rounded-md h-[20rem] flex justify-center items-center">
+    <section className="bg-ct-blue-600 min-h-screen pt-20">
+      <div className="bg-ct-dark-100 mx-auto flex h-[20rem] max-w-4xl items-center justify-center rounded-md">
         <div>
-          <p className="text-5xl font-semibold text-center">Profile Page</p>
+          <p className="text-center text-5xl font-semibold">Profile Page</p>
           {!user ? (
             <p>Loading...</p>
           ) : (

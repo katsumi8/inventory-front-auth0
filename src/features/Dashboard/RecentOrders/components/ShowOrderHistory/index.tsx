@@ -31,17 +31,17 @@ function ShowOrderHistory() {
   if (!orders) return <NoOrderFound />;
   return (
     <div className="p-4">
-      <div className="flex-row-reverse hidden pb-4 xl:flex">
+      <div className="hidden flex-row-reverse pb-4 xl:flex">
         <Link href="/orders/new">
-          <div className="items-center hidden p-3 font-bold text-white bg-blue-500 rounded-full sm:flex">
+          <div className="hidden items-center rounded-full bg-blue-500 p-3 font-bold text-white sm:flex">
             <CgMathPlus className="text-white" size={30} />
             <p className="">New Order</p>
           </div>
         </Link>
       </div>
 
-      <div className="w-full p-4 m-auto overflow-y-auto bg-white rounded-lg">
-        <div className="grid items-center justify-between grid-cols-2 p-2 my-3 cursor-pointer md:grid-cols-5 sm:grid-cols-3">
+      <div className="m-auto w-full overflow-y-auto rounded-lg bg-white p-4">
+        <div className="my-3 grid cursor-pointer grid-cols-2 items-center justify-between p-2 sm:grid-cols-3 md:grid-cols-5">
           <span>OrderID</span>
           <span className="text-right sm:text-left">Status</span>
           <span className="hidden md:grid">Product Name</span>
@@ -52,24 +52,24 @@ function ShowOrderHistory() {
           {orders.map((order, id) => (
             <li
               key={id}
-              className="grid items-center justify-between grid-cols-2 p-2 my-3 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 md:grid-cols-5 sm:grid-cols-3"
+              className="my-3 grid cursor-pointer grid-cols-2 items-center justify-between rounded-lg bg-gray-50 p-2 hover:bg-gray-100 sm:grid-cols-3 md:grid-cols-5"
             >
               <div className="flex">
-                <div className="p-3 bg-purple-100 rounded-lg">
+                <div className="rounded-lg bg-purple-100 p-3">
                   <FaShoppingBag className="text-purple-800" />
                 </div>
-                <div className="pl-4 flex justify-center items-center">
-                  <p className="font-bold text-gray-800 text-sm">{order.id}</p>
+                <div className="flex items-center justify-center pl-4">
+                  <p className="text-sm font-bold text-gray-800">{order.id}</p>
                 </div>
               </div>
               <p className="text-right text-gray-600 sm:text-left">
                 <span
                   className={
                     order.status === "proccessing"
-                      ? "bg-green-200 p-2 rounded-lg"
+                      ? "rounded-lg bg-green-200 p-2"
                       : order.status === "completed"
-                      ? "bg-blue-200 p-2 rounded-lg"
-                      : "bg-yellow-200 p-2 rounded-lg"
+                      ? "rounded-lg bg-blue-200 p-2"
+                      : "rounded-lg bg-yellow-200 p-2"
                   }
                 >
                   {order.status}
@@ -77,7 +77,7 @@ function ShowOrderHistory() {
               </p>
               <p className="hidden font-bold md:flex">{order.productName}</p>
               <p className="hidden md:flex">{formatDate(order.createdAt)}</p>
-              <div className="items-center justify-between hidden sm:flex">
+              <div className="hidden items-center justify-between sm:flex">
                 <p>{order.supplier}</p>
                 <BsThreeDotsVertical />
               </div>
@@ -85,12 +85,12 @@ function ShowOrderHistory() {
           ))}
         </ul>
       </div>
-      <div className="fixed right-0 z-50 flex flex-row-reverse p-4 bottom-10 xl:hidden">
-        <div className="items-center bg-white rounded-full sm:hidden">
+      <div className="fixed right-0 bottom-10 z-50 flex flex-row-reverse p-4 xl:hidden">
+        <div className="items-center rounded-full bg-white sm:hidden">
           <BsPlusCircleFill className="text-blue-700" size={50} />
         </div>
         <Link href="/orders/new">
-          <div className="items-center hidden p-3 font-bold text-white bg-blue-500 rounded-full sm:flex">
+          <div className="hidden items-center rounded-full bg-blue-500 p-3 font-bold text-white sm:flex">
             <CgMathPlus className="text-white" size={30} />
             <p className="">New Order</p>
           </div>

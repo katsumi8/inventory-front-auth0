@@ -16,7 +16,4 @@ const useStore = create<UserStore>((set) => ({
     set((state) => ({ ...state, requestLoading: isLoading })),
 }));
 
-
-
-
 export default useStore;

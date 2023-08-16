@@ -9,7 +9,7 @@ function BarChartPT({
   chartOptions: any;
 }) {
   return (
-    <div className="w-full md:col-span-2 relative lg:h-[70vh] h-[50vh] m-auto p-4 border rounded-lg bg-white">
+    <div className="relative m-auto h-[50vh] w-full rounded-lg border bg-white p-4 md:col-span-2 lg:h-[70vh]">
       <Bar data={chartData} options={chartOptions} />
     </div>
   );
