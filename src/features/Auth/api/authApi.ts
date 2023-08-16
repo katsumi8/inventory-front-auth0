@@ -24,13 +24,8 @@ export const loginUserFn = async (user: LoginInput) => {
 
 export const verifyEmailFn = async (verificationCode: string) => {
   const response = await apiClient.get<GenericResponse>(
-    `auth/verifyemail/${verificationCode}`
+    `auth/verifyemail/${verificationCode}`,
   );
-  return response.data;
-};
-
-export const logoutUserFn = async () => {
-  const response = await apiClient.get<GenericResponse>("auth/logout");
   return response.data;
 };
 
@@ -44,18 +39,18 @@ export const forgotPasswordFn = async (email: string) => {
     "auth/forgotpassword",
     {
       email,
-    }
+    },
   );
   return response.data;
 };
 
 export const resetPasswordFn = async (
   data: ResetPasswordInput,
-  resetCode: string
+  resetCode: string,
 ) => {
   const response = await apiClient.patch<GenericResponse>(
     `auth/resetpassword/${resetCode}`,
-    data
+    data,
   );
   return response.data;
 };
