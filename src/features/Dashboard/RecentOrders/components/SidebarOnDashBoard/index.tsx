@@ -35,7 +35,7 @@ function RecentOrdersOnSidebar() {
         {orders.map((order, id) => (
           <li
             key={id}
-            className="grid items-center justify-between grid-cols-2 p-2 my-3 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 md:grid-cols-5 sm:grid-cols-3"
+            className="grid items-center justify-between grid-cols-2 p-2 my-3 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 md:grid-cols-4 sm:grid-cols-3"
           >
             <div className="flex">
               <div className="p-3 bg-purple-100 rounded-lg">
@@ -60,10 +60,6 @@ function RecentOrdersOnSidebar() {
             </p>
             <p className="hidden font-bold md:flex">{order.productName}</p>
             <p className="hidden md:flex">{formatDate(order.createdAt)}</p>
-            <div className="items-center justify-between hidden sm:flex">
-              <p>{order.supplier}</p>
-              <BsThreeDotsVertical />
-            </div>
           </li>
         ))}
       </ul>
