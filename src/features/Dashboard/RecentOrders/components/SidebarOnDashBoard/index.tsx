@@ -1,7 +1,6 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaShoppingBag } from "react-icons/fa";
 import { getOrders } from "../../api";
 
@@ -24,9 +23,15 @@ function RecentOrdersOnSidebar() {
 
     return `${dd}.${mm}.${yy}`;
   };
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error...</p>;
-  if (!orders) return <p>No orders found</p>;
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+  if (isError) {
+    return <p>Error...</p>;
+  }
+  if (!orders) {
+    return <p>No orders found</p>;
+  }
 
   return (
     <div className="relative col-span-1 m-auto h-[50vh] w-full overflow-scroll rounded-lg p-4 lg:h-[70vh]">

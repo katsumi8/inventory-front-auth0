@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const getUser = () => {
+export const useGetUser = () => {
   const store = useStore();
 
   const { data, isLoading } = useQuery(["getMe"], getMeFn, {

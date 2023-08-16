@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import Placeholder from "./Placeholder";
-import { getUser } from "@/utils/getUser";
+import { useGetUser } from "@/hooks/useGetUser";
+import React, { useCallback, useEffect } from "react";
 import DropdownList from "./DropdownList";
+import Placeholder from "./Placeholder";
 
 type Props = {
   showDropdown: boolean;
@@ -9,27 +9,30 @@ type Props = {
 };
 
 function AvatarIcon({ setShowDropdown, showDropdown }: Props) {
-  const { user } = getUser();
+  const { user } = useGetUser();
 
-  const handleClickOutside = (event: MouseEvent) => {
-    const target = event.target as HTMLElement;
-    const dropdown = document.getElementById("userDropdown") as HTMLElement;
-    // // ドロップダウンリストかAvatarButtonをクリックしたときは何もしない
-    if (target.closest("#userDropdown") || target.closest("#avatarButton")) {
-      return;
-    }
-    // ドロップダウンリスト以外をクリックしたときはdropdownを閉じる
-    if (dropdown && !dropdown.contains(target)) {
-      setShowDropdown(false);
-    }
-  };
+  const handleClickOutside = useCallback(
+    (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      const dropdown = document.getElementById("userDropdown") as HTMLElement;
+      // ドロップダウンリストかAvatarButtonをクリックしたときは何もしない
+      if (target.closest("#userDropdown") || target.closest("#avatarButton")) {
+        return;
+      }
+      // ドロップダウンリスト以外をクリックしたときはdropdownを閉じる
+      if (dropdown && !dropdown.contains(target)) {
+        setShowDropdown(false);
+      }
+    },
+    [setShowDropdown],
+  ); // dependency for useCallback
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, []);
+  }, [handleClickOutside]);
 
   return (
     <div className="relative">

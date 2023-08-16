@@ -1,8 +1,9 @@
 "use client";
-import { getUser } from "@/utils/getUser";
+
+import { useGetUser } from "@/hooks/useGetUser";
 
 const ProfilePage = () => {
-  const { user } = getUser();
+  const { user } = useGetUser();
 
   return (
     <section className="bg-ct-blue-600 min-h-screen pt-20">

@@ -26,9 +26,15 @@ function ShowOrderHistory() {
 
     return `${dd}.${mm}.${yy}`;
   };
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error...</p>;
-  if (!orders) return <NoOrderFound />;
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+  if (isError) {
+    return <p>Error...</p>;
+  }
+  if (!orders) {
+    return <NoOrderFound />;
+  }
   return (
     <div className="p-4">
       <div className="hidden flex-row-reverse pb-4 xl:flex">

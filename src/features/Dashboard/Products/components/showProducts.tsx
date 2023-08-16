@@ -1,8 +1,5 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
-import Link from "next/link";
-import { BsThreeDotsVertical } from "react-icons/bs";
-import { CgMathPlus } from "react-icons/cg";
 import { MdOutlineFoodBank } from "react-icons/md";
 import { getOrders } from "../../RecentOrders/api";
 
@@ -16,9 +13,15 @@ function ShowProducts() {
     retry: false,
   });
 
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error...</p>;
-  if (!orders) return <p>No products...</p>;
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+  if (isError) {
+    return <p>Error...</p>;
+  }
+  if (!orders) {
+    return <p>No products...</p>;
+  }
 
   return (
     <div className="p-4">

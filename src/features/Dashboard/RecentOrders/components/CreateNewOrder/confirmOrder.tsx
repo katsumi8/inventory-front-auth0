@@ -3,20 +3,21 @@ import { useOrderStore } from "../../store";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCreateOrder } from "../../hooks/useCreateOrder";
-import { getUser } from "@/utils/getUser";
+import { useGetUser } from "@/hooks/useGetUser";
 
 export const ConfirmOrder = () => {
   const router = useRouter();
   const orders = useOrderStore((state) => state.order);
   const { createOrder } = useCreateOrder();
-  const { user, isLoading } = getUser();
+  const { user, isLoading } = useGetUser();
 
-  if (isLoading)
+  if (isLoading) {
     return (
       <div className="m-auto h-[90vh] w-full overflow-y-auto rounded-lg bg-white p-4">
         Loading...
       </div>
     );
+  }
 
   if (!user || !orders) {
     return (
