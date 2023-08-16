@@ -8,6 +8,8 @@ export const apiClient = axios.create({
   withCredentials: true,
 });
 
+console.log("SERVER_ENDPOINT: ", SERVER_ENDPOINT);
+
 apiClient.defaults.headers.common["Content-Type"] = "application/json";
 apiClient.defaults.headers.common.Accept = "application/json";
 apiClient.interceptors.request.use(
