@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Placeholder from "./Placeholder";
 import { getUser } from "@/utils/getUser";
-import { logoutUser } from "@/utils/logoutUser";
 import DropdownList from "./DropdownList";
 
 type Props = {
