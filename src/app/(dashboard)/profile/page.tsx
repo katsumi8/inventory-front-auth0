@@ -17,8 +17,6 @@ const ProfilePage = () => {
                 <p className="mb-3">ID: {user.id}</p>
                 <p className="mb-3">Name: {user.name}</p>
                 <p className="mb-3">Email: {user.email}</p>
-                <p className="mb-3">Role: {user.role}</p>
-                <p className="mb-3">Provider: {user.provider}</p>
               </div>
             </div>
           )}
