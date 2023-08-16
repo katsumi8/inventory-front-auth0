@@ -1,11 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { postOrder } from "../api";
-import { CreateNewOrderInput } from "../schema/newOrderForm.schema";
+import { CreateOrderInput, postOrder } from "../api";
 
 export const useCreateOrder = () => {
   const { mutateAsync: createOrder } = useMutation(
-    (productCreateInput: CreateNewOrderInput) => postOrder(productCreateInput),
+    (orderCreateInput: CreateOrderInput) => postOrder(orderCreateInput),
     {
       onError(error: any) {
         if (axios.isAxiosError(error)) {
@@ -17,7 +16,7 @@ export const useCreateOrder = () => {
           console.log("unexpected error: ", error);
         }
       },
-    }
+    },
   );
 
   return { createOrder };

@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 export const getUser = () => {
   const store = useStore();
 
-  const { data } = useQuery(["getMe"], getMeFn, {
+  const { data, isLoading } = useQuery(["getMe"], getMeFn, {
     select(data) {
       return data;
     },
@@ -38,5 +38,5 @@ export const getUser = () => {
   });
   const user = store.authUser;
 
-  return { user };
+  return { user, isLoading };
 };

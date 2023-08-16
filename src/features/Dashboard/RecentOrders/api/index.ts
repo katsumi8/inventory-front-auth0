@@ -1,14 +1,21 @@
 import { apiClient } from "@/api";
 import { BaseRespose } from "@/types";
-import { CreateNewOrderInput } from "../schema/newOrderForm.schema";
 import { OrderResponse } from "../types";
+
+export type CreateOrderInput = {
+  ProductName: string;
+  Supplier: string;
+  AdditionalNotes?: string;
+  Quantity: number;
+  UserID: number;
+};
 
 export const getOrders = async () => {
   const response = await apiClient.get<OrderResponse>("orders");
   return response.data;
 };
 
-export const postOrder = async (order: CreateNewOrderInput) => {
+export const postOrder = async (order: CreateOrderInput) => {
   const response = await apiClient.post<BaseRespose>("orders", order);
   return response.data;
 };
