@@ -8,6 +8,7 @@ export const useGetUser = () => {
   const store = useStore();
 
   const { data, isLoading } = useQuery(["getMe"], getMeFn, {
+    retry: 5,
     select(data) {
       return data;
     },
