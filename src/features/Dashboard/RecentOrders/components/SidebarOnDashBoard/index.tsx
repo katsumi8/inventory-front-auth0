@@ -1,6 +1,7 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaShoppingBag } from "react-icons/fa";
 import { getOrders } from "../../api";
 
@@ -14,6 +15,7 @@ function RecentOrdersOnSidebar() {
     cacheTime: 0,
     retry: false,
   });
+
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
     const dd = String(date.getDate()).padStart(2, "0");
@@ -30,32 +32,40 @@ function RecentOrdersOnSidebar() {
     <div className="w-full col-span-1 relative lg:h-[70vh] h-[50vh] m-auto p-4 rounded-lg overflow-scroll">
       <h1>Recent Orders</h1>
       <ul>
-        {orders.map((order, id) => {
-          return (
-            <li
-              key={id}
-              className="bg-gray-50 hover:bg-gray-100 rounded-lg my-3 p-2 flex items-center cursor-pointer"
-            >
-              <div className="bg-purple-100 rounded-lg p-3">
+        {orders.map((order, id) => (
+          <li
+            key={id}
+            className="grid items-center justify-between grid-cols-2 p-2 my-3 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 md:grid-cols-5 sm:grid-cols-3"
+          >
+            <div className="flex">
+              <div className="p-3 bg-purple-100 rounded-lg">
                 <FaShoppingBag className="text-purple-800" />
               </div>
-              <div className="pl-4">
-                <p className="text-gray-800 font-bold">
-                  {order.orderLines
-                    .map(
-                      (orderLine) =>
-                        orderLine.product.purchasePrice * orderLine.quantity
-                    )
-                    .reduce((a, b) => a + b, 0)}{" "}
-                  €
-                </p>
+              <div className="pl-4 flex justify-center items-center">
+                <p className="font-bold text-gray-800 text-sm">{order.id}</p>
               </div>
-              <p className="lg:flex md:hidden absolute right-6 text-sm">
-                {formatDate(order.createdAt)}
-              </p>
-            </li>
-          );
-        })}
+            </div>
+            <p className="text-right text-gray-600 sm:text-left">
+              <span
+                className={
+                  order.status === "proccessing"
+                    ? "bg-green-200 p-2 rounded-lg"
+                    : order.status === "completed"
+                    ? "bg-blue-200 p-2 rounded-lg"
+                    : "bg-yellow-200 p-2 rounded-lg"
+                }
+              >
+                {order.status}
+              </span>
+            </p>
+            <p className="hidden font-bold md:flex">{order.productName}</p>
+            <p className="hidden md:flex">{formatDate(order.createdAt)}</p>
+            <div className="items-center justify-between hidden sm:flex">
+              <p>{order.supplier}</p>
+              <BsThreeDotsVertical />
+            </div>
+          </li>
+        ))}
       </ul>
     </div>
   );

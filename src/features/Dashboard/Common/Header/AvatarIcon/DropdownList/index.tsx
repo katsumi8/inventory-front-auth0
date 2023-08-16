@@ -1,13 +1,14 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import Link from "next/link";
 import React from "react";
 
 type Props = {
   userName: string;
   UserEmail: string;
-  handleLogout: () => void;
 };
 
-function DropdownList({ userName, UserEmail, handleLogout }: Props) {
+function DropdownList({ userName, UserEmail }: Props) {
+  const { logout } = useAuth0();
   const clickableList = [
     { name: "Dashboard", link: "/" },
     { name: "Orders", link: "/orders" },
@@ -35,9 +36,10 @@ function DropdownList({ userName, UserEmail, handleLogout }: Props) {
       </ul>
       <div className="py-1 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
         <button
-          type="button"
           className="px-4 py-2 text-sm text-gray-700"
-          onClick={handleLogout}
+          onClick={() =>
+            logout({ logoutParams: { returnTo: window.location.origin } })
+          }
         >
           Sign out
         </button>

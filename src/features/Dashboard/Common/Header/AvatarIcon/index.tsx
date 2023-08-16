@@ -11,7 +11,6 @@ type Props = {
 
 function AvatarIcon({ setShowDropdown, showDropdown }: Props) {
   const { user } = getUser();
-  const { handleLogout } = logoutUser();
 
   const handleClickOutside = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
@@ -44,11 +43,7 @@ function AvatarIcon({ setShowDropdown, showDropdown }: Props) {
         <Placeholder />
       </button>
       {showDropdown && user && (
-        <DropdownList
-          userName={user.name}
-          UserEmail={user.email}
-          handleLogout={handleLogout}
-        />
+        <DropdownList userName={user.name} UserEmail={user.email} />
       )}
     </div>
   );

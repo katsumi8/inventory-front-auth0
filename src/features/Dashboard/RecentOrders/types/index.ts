@@ -7,10 +7,9 @@ interface Order {
   additionalNotes?: string;
   status: string;
   quantity: number;
-  userId?: string;
+  userId: number;
 }
 
 export interface OrderResponse {
-  errors: string[];
   data: Order[];
 }

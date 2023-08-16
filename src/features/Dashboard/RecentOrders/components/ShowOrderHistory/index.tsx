@@ -15,9 +15,9 @@ function ShowOrderHistory() {
     data: orders,
   } = useQuery(["orders"], () => getOrders(), {
     select: (data) => data.data,
-    cacheTime: 0,
     retry: false,
   });
+
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
     const dd = String(date.getDate()).padStart(2, "0");
@@ -44,7 +44,7 @@ function ShowOrderHistory() {
         <div className="grid items-center justify-between grid-cols-2 p-2 my-3 cursor-pointer md:grid-cols-5 sm:grid-cols-3">
           <span>OrderID</span>
           <span className="text-right sm:text-left">Status</span>
-          <span className="hidden md:grid">Price</span>
+          <span className="hidden md:grid">Product Name</span>
           <span className="hidden sm:grid">Last Order</span>
           <span className="hidden sm:grid">Supplier</span>
         </div>
@@ -75,15 +75,7 @@ function ShowOrderHistory() {
                   {order.status}
                 </span>
               </p>
-              <p className="hidden font-bold md:flex">
-                {order.orderLines
-                  .map(
-                    (orderLine) =>
-                      orderLine.product.purchasePrice * orderLine.quantity
-                  )
-                  .reduce((a, b) => a + b, 0)}{" "}
-                €
-              </p>
+              <p className="hidden font-bold md:flex">{order.productName}</p>
               <p className="hidden md:flex">{formatDate(order.createdAt)}</p>
               <div className="items-center justify-between hidden sm:flex">
                 <p>{order.supplier}</p>
