@@ -7,6 +7,6 @@ export const getAccessToken = async () => {
     const accessToken = await client.getTokenSilently();
     return accessToken;
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 };
